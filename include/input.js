@@ -339,7 +339,7 @@ var Keyboard, Mouse;
                 Util.addEvent(c, 'touchmove', this._eventHandlers.mousemove);
             }
 
-            // v0.6.2-touchfix - removing logic such that it's either mouse events or touch events.
+            // v0.5.1-touchfix - removing logic such that it's either mouse events or touch events.
             // Some laptops have touch screens which means they cannot use their mouse.
             Util.addEvent(c, 'mousedown', this._eventHandlers.mousedown);
             Util.addEvent(window, 'mouseup', this._eventHandlers.mouseup);
@@ -363,7 +363,7 @@ var Keyboard, Mouse;
                 Util.removeEvent(c, 'touchmove', this._eventHandlers.mousemove);
             }
 
-            // v0.6.2-touchfix - removing logic such that it's either mouse events or touch events.
+            // v0.5.1-touchfix - removing logic such that it's either mouse events or touch events.
             // Some laptops have touch screens which means they cannot use their mouse.
             Util.removeEvent(c, 'mousedown', this._eventHandlers.mousedown);
             Util.removeEvent(window, 'mouseup', this._eventHandlers.mouseup);
