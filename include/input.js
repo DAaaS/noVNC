@@ -360,15 +360,17 @@ var Keyboard, Mouse;
                 Util.removeEvent(window, 'touchend', this._eventHandlers.mouseup);
                 Util.removeEvent(c, 'touchend', this._eventHandlers.mouseup);
                 Util.removeEvent(c, 'touchmove', this._eventHandlers.mousemove);
-            } else {
-                Util.removeEvent(c, 'mousedown', this._eventHandlers.mousedown);
-                Util.removeEvent(window, 'mouseup', this._eventHandlers.mouseup);
-                Util.removeEvent(c, 'mouseup', this._eventHandlers.mouseup);
-                Util.removeEvent(c, 'mousemove', this._eventHandlers.mousemove);
-                Util.removeEvent(c, (Util.Engine.gecko) ? 'DOMMouseScroll' : 'mousewheel',
-                                 this._eventHandlers.mousewheel);
             }
 
+            // v0.6.2-touchfix - removing logic such that it's either mouse events or touch events.
+	    // Some laptops have touch screens which means they cannot use their mouse.
+            Util.removeEvent(c, 'mousedown', this._eventHandlers.mousedown);
+            Util.removeEvent(window, 'mouseup', this._eventHandlers.mouseup);
+            Util.removeEvent(c, 'mouseup', this._eventHandlers.mouseup);
+            Util.removeEvent(c, 'mousemove', this._eventHandlers.mousemove);
+            Util.removeEvent(c, (Util.Engine.gecko) ? 'DOMMouseScroll' : 'mousewheel',
+                             this._eventHandlers.mousewheel);
+            
             /* Work around right and middle click browser behaviors */
             Util.removeEvent(document, 'click', this._eventHandlers.mousedisable);
             Util.removeEvent(document.body, 'contextmenu', this._eventHandlers.mousedisable);
